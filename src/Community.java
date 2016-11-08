@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by ymsil on 11/7/2016.
  */
 public class Community
 {
-    public static ArrayList<CommunityMember> communityMembers = new ArrayList<>();
+    public ArrayList<CommunityMember> communityMembers = new ArrayList<>();
 
     private int balance;
     private float moneyForDonations;
@@ -41,7 +43,7 @@ public class Community
 
     public float DonationRequest(CommunityMember member)
     {
-        int DonationToMember = member.maxChartiyForMember();
+        int DonationToMember = member.maxCharityForMember();
         if (DonationToMember < moneyForDonations)
         {
             int newBalance = balance - DonationToMember;
@@ -54,6 +56,22 @@ public class Community
             setBalance(newBalance);
             return (int)(moneyForDonations);
         }
+    }
+
+    public Map listOfVolunteeringHours()
+    {
+        Map VolunteeringHours = new HashMap<>();
+        for (VolunteeringActivity cont : VolunteeringActivity.values())
+            VolunteeringHours.put(cont, 0);
+        VolunteeringActivity activity;
+        int hours;
+        for (CommunityMember member : communityMembers)
+        {
+            activity = member.getVolunteeringActivity();
+            hours = member.RecommendedVolunteeringHoursForMember();
+            VolunteeringHours.put(activity, (int)VolunteeringHours.get(activity) + hours);
+        }
+        return VolunteeringHours;
     }
 
 

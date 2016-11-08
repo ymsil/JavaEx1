@@ -11,11 +11,11 @@ public abstract class CommunityMember implements DebtsAndRights
     private int weeklyTorahHours;
     private int weeklyWorkHours;
     private int monthlyIncome;
-    private Contribution contribution;
+    private VolunteeringActivity volunteeringActivity;
 
     public CommunityMember(int id, Gender gender, String name, String address, String dateOfBirth,
                            int weeklyTorahHours, int weeklyWorkHours, int monthlyIncome,
-                           Contribution contribution)
+                           VolunteeringActivity volunteeringActivity)
             throws Exception
     {
         Id = id;
@@ -30,13 +30,12 @@ public abstract class CommunityMember implements DebtsAndRights
         if (weeklyTorahHours + monthlyIncome < 112)
             throw new Exception("Not enough working or learning Torah hours in a week.\n" +
                     "Sorry! can't be a member.");
-        this.contribution = contribution;
+        this.volunteeringActivity = volunteeringActivity;
     }
 
     public boolean isToratoOmanoto()
     {
-        if (weeklyWorkHours == 0) return true;
-        else return false;
+        return weeklyWorkHours == 0;
     }
 
     public int getId() {
@@ -87,10 +86,10 @@ public abstract class CommunityMember implements DebtsAndRights
     public void setMonthlyIncome(int monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
-    public Contribution getContribution() {
-        return contribution;
+    public VolunteeringActivity getVolunteeringActivity() {
+        return volunteeringActivity;
     }
-    public void setContribution(Contribution contribution) {
-        this.contribution = contribution;
+    public void setVolunteeringActivity(VolunteeringActivity volunteeringActivity) {
+        this.volunteeringActivity = volunteeringActivity;
     }
 }

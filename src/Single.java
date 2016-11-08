@@ -7,12 +7,12 @@ public class Single extends CommunityMember
     private Residence residence;
 
     public Single(int id, Gender gender, String name, String address, String dateOfBirth,
-                  int weeklyTorahHours, int weeklyWorkHours, int monthlyIncome, Contribution contribution,
+                  int weeklyTorahHours, int weeklyWorkHours, int monthlyIncome, VolunteeringActivity volunteeringActivity,
                   int yearsOfEducation, Residence residence)
             throws Exception
     {
         super(id, gender, name, address, dateOfBirth,
-                weeklyTorahHours, weeklyWorkHours, monthlyIncome, contribution);
+                weeklyTorahHours, weeklyWorkHours, monthlyIncome, volunteeringActivity);
         this.yearsOfEducation = yearsOfEducation;
         this.residence = residence;
     }
@@ -33,12 +33,12 @@ public class Single extends CommunityMember
     @Override
     public int taxForMember()
     {
-        if (maxChartiyForMember() > 0) return 0;
+        if (maxCharityForMember() > 0) return 0;
         return 800;
     }
 
     @Override
-    public int maxChartiyForMember()
+    public int maxCharityForMember()
     {
         return 0;
     }

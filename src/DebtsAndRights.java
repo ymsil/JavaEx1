@@ -3,7 +3,7 @@
  */
 public interface DebtsAndRights
 {
-    public int taxForMember();
-    public int maxChartiyForMember();
-    public int RecommendedVolunteeringHoursForMember();
+    int taxForMember();
+    int maxCharityForMember();
+    int RecommendedVolunteeringHoursForMember();
 }

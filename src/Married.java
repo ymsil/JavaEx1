@@ -7,11 +7,11 @@ public class Married extends CommunityMember
     private int numOfKidsUnder18;
 
     public Married(int id, Gender gender, String name, String address, String dateOfBirth,
-                   int weeklyTorahHours, int weeklyWorkHours, int monthlyIncome, Contribution contribution,
+                   int weeklyTorahHours, int weeklyWorkHours, int monthlyIncome, VolunteeringActivity volunteeringActivity,
                    int partnerId, int numOfKidsUnder18)
             throws Exception
     {
-        super(id, gender, name, address, dateOfBirth, weeklyTorahHours, weeklyWorkHours, monthlyIncome, contribution);
+        super(id, gender, name, address, dateOfBirth, weeklyTorahHours, weeklyWorkHours, monthlyIncome, volunteeringActivity);
         this.partnerId = partnerId;
         this.numOfKidsUnder18 = numOfKidsUnder18;
     }
@@ -32,13 +32,13 @@ public class Married extends CommunityMember
     @Override
     public int taxForMember()
     {
-        if ( maxChartiyForMember() > 0 ) return 0;
+        if ( maxCharityForMember() > 0 ) return 0;
         if (numOfKidsUnder18 > 1) return 2500;
         return 1000;
     }
 
     @Override
-    public int maxChartiyForMember()
+    public int maxCharityForMember()
     {
         if (isToratoOmanoto()) return (1800+(getNumOfKidsUnder18()*400));
         else if (getMonthlyIncome() < 5000) return (1000+(getNumOfKidsUnder18()*200));
