@@ -27,10 +27,10 @@ public abstract class CommunityMember implements DebtsAndRights
         this.weeklyWorkHours = weeklyWorkHours;
         this.monthlyIncome = monthlyIncome;
         // 2/3 of hours in week: (24*7)*(2/3) = 112
-        if (weeklyTorahHours + monthlyIncome < 112)
+        if (weeklyTorahHours + weeklyWorkHours < 112)
             throw new Exception("Not enough working or learning Torah hours in a week.\n" +
                     "Sorry! can't be a member.");
-        this.volunteeringActivity = volunteeringActivity;
+        if ( volunteeringActivity != null ) this.volunteeringActivity = volunteeringActivity;
     }
 
     public boolean isToratoOmanoto()
@@ -91,5 +91,14 @@ public abstract class CommunityMember implements DebtsAndRights
     }
     public void setVolunteeringActivity(VolunteeringActivity volunteeringActivity) {
         this.volunteeringActivity = volunteeringActivity;
+    }
+
+    @Override
+    public String toString() {
+        return (Id + " " + name + " " + gender.toString() + " " + address + " " + dateOfBirth + "\n" +
+                "weekly Torah Hours: " + weeklyTorahHours + "\n" +
+                "weekly work Hours: " + weeklyWorkHours + "\n" +
+                "income: " + monthlyIncome + "\n" +
+                "volunteering activity: " + volunteeringActivity.toString());
     }
 }

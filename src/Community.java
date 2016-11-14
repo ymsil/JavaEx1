@@ -25,6 +25,10 @@ public class Community
         moneyForDonations = (float) (balance*0.2);
         return moneyForDonations;
     }
+    public void addMoneyToCommunity(int money)
+    {
+        setBalance(balance+ money);
+    }
 
 
     public void addMember(CommunityMember member)
@@ -75,4 +79,32 @@ public class Community
     }
 
 
+    public void printCommunityDetails()
+    {
+        for (CommunityMember member : communityMembers)
+        {
+            System.out.println(member.toString());
+        }
+    }
+
+    public void removeMember(int aId) throws Exception
+    {
+        CommunityMember memberToRemove = getMember(aId);
+        communityMembers.remove(memberToRemove);
+    }
+    public CommunityMember getMember(int aId) throws Exception
+    {
+        for (CommunityMember member : communityMembers)
+        {
+            if (member.getId() == aId) return member;
+            break;
+        }
+        throw new Exception("no member with this id");
+    }
+
+    public int amountGemachLoan(int aId) throws Exception
+    {
+        CommunityMember memberToDonate = getMember(aId);
+        return memberToDonate.maxCharityForMember();
+    }
 }
