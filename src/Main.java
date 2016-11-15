@@ -49,7 +49,7 @@ public class Main{
     }
 
     private static void maxTax() {
-        System.out.println("the tax is: " + COM.expectedTaxFromMembers());
+        System.out.println("expected tax from members is: " + COM.expectedTaxFromMembers());
     }
 
     private static void addingMoneyToComunity() throws Exception {

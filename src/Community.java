@@ -84,6 +84,7 @@ public class Community
         for (CommunityMember member : communityMembers)
         {
             System.out.println(member.toString());
+            System.out.println();
         }
     }
 
